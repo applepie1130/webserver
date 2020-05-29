@@ -1,9 +1,6 @@
-
-
-
 webserver:
   port: 8081
-  thread-count: 50        
+  thread-count: 50
 
 logging:
   level:

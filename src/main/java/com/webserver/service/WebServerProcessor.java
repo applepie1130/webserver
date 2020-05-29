@@ -44,6 +44,5 @@ public class WebServerProcessor {
 
         String httpPath = request.getHttpPath();
         
-        
 	}
 }

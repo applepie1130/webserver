@@ -4,13 +4,17 @@ package com.webserver.model;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
+import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpMethod;
+
+import com.webserver.model.type.HtmlFileType;
 
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +29,7 @@ public class Request {
     private BufferedReader bufferedReader;
     private HttpMethod httpMethod;
     private String httpPath;
+    private String fileName;
     private String httpVersion;
     private Map<String, String> headers;
 
@@ -45,7 +50,12 @@ public class Request {
             if ( list != null && list.size() > 0 ) {
             	this.httpMethod = HttpMethod.valueOf(list.get(0));
             	this.httpPath = list.get(1);
+            	
+    			if ( StringUtils.endsWith(httpPath, "/") ) {
+    				this.fileName += HtmlFileType.INDEX.getName();
+    			}
             } 
+            
             if ( list != null && list.size() > 2 ) {
             	this.httpVersion = list.get(2);
             }
