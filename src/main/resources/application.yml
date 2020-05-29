@@ -1,0 +1,16 @@
+
+
+
+webserver:
+  port: 8081
+  thread-count: 50        
+
+logging:
+  level:
+    com.webserver: DEBUG
+  file:
+    path: '/app/webserver/logs/'
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+    
